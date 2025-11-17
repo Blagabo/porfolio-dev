@@ -1,0 +1,109 @@
+---
+import { Icon } from "astro-icon/components"
+import { contactContent, siteConfig } from "../data/site"
+---
+
+<section id="contact" class="bg-bg border-border-primary border-t py-16" data-animate>
+	<div class="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-2xl text-center">
+			<h2 class="section-heading">Let’s connect</h2>
+			<p class="text-text-secondary text-lg">{contactContent.intro}</p>
+		</div>
+		<div class="grid gap-10 lg:grid-cols-2">
+			<div
+				class="contact-card bg-bg dark:bg-bg border-border-primary rounded-2xl border p-8 shadow-xl"
+			>
+				<h3 class="text-text-primary mb-6 text-xl font-semibold">Send me a message</h3>
+				<form id="contact-form" class="space-y-5">
+					<input type="text" name="_gotcha" class="hidden" />
+					<div class="flex flex-col gap-4 sm:flex-row">
+						<label class="flex-1">
+							<span class="text-text-secondary text-sm font-medium">Name</span>
+							<input type="text" name="name" class="form-field" required />
+						</label>
+						<label class="flex-1">
+							<span class="text-text-secondary text-sm font-medium">Email</span>
+							<input type="email" name="email" class="form-field" required />
+						</label>
+					</div>
+					<label class="block">
+						<span class="text-text-secondary text-sm font-medium">Subject</span>
+						<input type="text" name="subject" class="form-field" required />
+					</label>
+					<label class="block">
+						<span class="text-text-secondary text-sm font-medium">Message</span>
+						<textarea name="message" rows="5" class="form-field" required></textarea>
+					</label>
+					<button
+						type="submit"
+						class="bg-gradient-primary button-hover rounded-lg px-6 py-3 font-semibold text-white"
+					>
+						Send Message
+					</button>
+				</form>
+			</div>
+			<div
+				class="contact-card bg-bg dark:bg-bg border-border-primary space-y-6 rounded-2xl border p-8 shadow-xl"
+			>
+				<div>
+					<h3 class="text-text-primary mb-4 text-xl font-semibold">Contact information</h3>
+					<p class="text-text-secondary">{siteConfig.heroDescription}</p>
+				</div>
+				<div class="space-y-4">
+					<div class="contact-row">
+						<div class="contact-icon">
+							<Icon name="fa6-regular:envelope" class="text-second" />
+						</div>
+						<div>
+							<h4 class="text-text-primary font-semibold">Email</h4>
+							<a href={`mailto:${siteConfig.contactEmail}`} class="text-primary"
+								>{siteConfig.contactEmail}</a
+							>
+						</div>
+					</div>
+					<div class="contact-row">
+						<div class="contact-icon">
+							<Icon name="fa6-brands:linkedin-in" class="text-primary" />
+						</div>
+						<div>
+							<h4 class="text-text-primary font-semibold">LinkedIn</h4>
+							<a href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="text-primary">
+								{siteConfig.linkedin}
+							</a>
+						</div>
+					</div>
+					<div class="contact-row">
+						<div class="contact-icon">
+							<Icon name="fa6-brands:github" class="text-third" />
+						</div>
+						<div>
+							<h4 class="text-text-primary font-semibold">GitHub</h4>
+							<a href={siteConfig.github} target="_blank" rel="noreferrer" class="text-primary">
+								{siteConfig.github}
+							</a>
+						</div>
+					</div>
+					<div class="contact-row">
+						<div class="contact-icon">
+							<Icon name="fa6-solid:map-location-dot" class="text-second" />
+						</div>
+						<div>
+							<h4 class="text-text-primary font-semibold">Location</h4>
+							<p class="text-text-secondary">{contactContent.locations.join(" · ")}</p>
+						</div>
+					</div>
+				</div>
+				<div>
+					<h4 class="text-text-primary mb-3 font-semibold">Collaboration tags</h4>
+					<div class="flex flex-wrap gap-2">
+						{
+							siteConfig.collabTags.map((tag) => (
+								<span class="collab-tag rounded-full px-3 py-1 text-sm">{tag}</span>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,88 @@
+---
+import { Icon } from "astro-icon/components"
+import { siteConfig } from "../data/site"
+---
+
+<section
+	id="home"
+	class="hero-section gradient-bg relative flex min-h-screen items-center overflow-hidden text-white"
+>
+	<div class="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+		<div class="flex flex-col items-center justify-between gap-12 lg:flex-row">
+			<div class="flex justify-center lg:w-1/2 lg:justify-start" data-animation="profile-image">
+				<div class="relative">
+					<div
+						class="bg-gradient-primary h-72 w-72 rounded-full p-1 shadow-2xl md:h-80 md:w-80 lg:h-96 lg:w-96"
+					>
+						<div class="h-full w-full overflow-hidden rounded-full bg-white">
+							<img
+								src={siteConfig.profileImage}
+								alt={`Portrait of ${siteConfig.name}`}
+								class="h-full w-full rounded-full object-cover"
+								loading="lazy"
+							/>
+						</div>
+					</div>
+					<div class="absolute -bottom-4 -right-4" data-animation="location-badge">
+						<div
+							class="flex items-center rounded-full border border-white/20 bg-black/80 px-4 py-2 text-white"
+						>
+							<Icon name="fa6-solid:location-dot" class="text-primary-light mr-2" />
+							<span class="text-sm font-semibold">{siteConfig.heroLocation}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="hero-text-element space-y-6 text-center lg:w-1/2 lg:text-left"
+				data-animation="container"
+			>
+				<span class="hero-text-accent text-lg">{siteConfig.heroGreeting}</span>
+				<h1 class="hero-name font-heading text-5xl font-bold md:text-6xl">{siteConfig.name}</h1>
+				<h2 class="hero-text-accent text-2xl md:text-3xl">
+					<span class="typewriter" data-original-text={siteConfig.tagline}
+						>{siteConfig.tagline}</span
+					>
+				</h2>
+				<p
+					class="hero-text-muted rounded-xl bg-white/5 px-6 py-4 text-lg leading-relaxed md:text-xl dark:bg-white/10"
+				>
+					{siteConfig.heroDescription}
+				</p>
+				<div class="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
+					<a
+						href="#contact"
+						class="hero-button bg-bg text-primary button-hover rounded-lg px-8 py-4 font-semibold"
+					>
+						{siteConfig.heroCTA.contact}
+					</a>
+					<a
+						href={siteConfig.resume.en}
+						target="_blank"
+						rel="noreferrer"
+						class="hero-button bg-bg text-primary button-hover rounded-lg px-8 py-4 font-semibold"
+					>
+						{siteConfig.heroCTA.resume}
+					</a>
+				</div>
+				<div class="mt-8 flex justify-center lg:justify-start" data-animation="social">
+					<div class="flex space-x-4 rounded-lg bg-white/20 px-4 py-3 backdrop-blur">
+						{
+							siteConfig.social.map((item) => (
+								<a
+									href={item.url}
+									target="_blank"
+									rel="noreferrer"
+									class="text-white transition-transform duration-300 hover:scale-125"
+								>
+									<Icon name={item.icon} class="text-3xl" aria-label={item.label} />
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

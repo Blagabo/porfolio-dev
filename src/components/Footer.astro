@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components"
+import { siteConfig } from "../data/site"
+---
+
+<footer
+	class="bg-bg-secondary dark:bg-bg-secondary text-text-primary border-border-primary mt-16 border-t py-12"
+>
+	<div
+		class="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-4 sm:px-6 md:flex-row lg:px-8"
+	>
+		<div>
+			<a href="#home" class="font-heading text-text-primary text-xl font-bold">{siteConfig.name}</a>
+			<p class="text-text-secondary dark:text-text-secondary mt-2 max-w-md">
+				{siteConfig.heroDescription}
+			</p>
+			<p class="text-text-secondary dark:text-text-secondary mt-2 flex items-center gap-2">
+				<Icon name="fa6-solid:location-dot" />
+				{siteConfig.heroLocation}
+			</p>
+			<a
+				href={`mailto:${siteConfig.contactEmail}`}
+				class="text-primary mt-2 inline-flex items-center gap-2"
+			>
+				<Icon name="fa6-regular:envelope" />
+				{siteConfig.contactEmail}
+			</a>
+		</div>
+		<div class="flex flex-col items-start gap-4 md:items-end">
+			<div class="flex flex-wrap justify-end gap-2">
+				{
+					siteConfig.collabTags.map((tag) => (
+						<span class="collab-tag rounded-full px-3 py-1 text-sm">{tag}</span>
+					))
+				}
+			</div>
+			<div class="flex gap-4">
+				{
+					siteConfig.social.map((item) => (
+						<a
+							href={item.url}
+							target="_blank"
+							rel="noreferrer"
+							class="text-text-primary dark:text-text-primary hover:text-third transition-colors"
+						>
+							<Icon name={item.icon} class="text-2xl" aria-label={item.label} />
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+	<div
+		class="text-text-secondary dark:text-text-secondary border-border-primary mt-8 border-t pt-6 text-center text-sm"
+	>
+		© {new Date().getFullYear()}
+		{siteConfig.name}. All rights reserved.
+	</div>
+</footer>

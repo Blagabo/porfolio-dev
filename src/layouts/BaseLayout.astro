@@ -1,0 +1,46 @@
+---
+import ConfigScript from "../components/ConfigScript.astro"
+import Footer from "../components/Footer.astro"
+import Nav from "../components/Nav.astro"
+import { languages, navLinks, siteConfig } from "../data/site"
+import heroScript from "../scripts/gsap-hero.ts?url"
+import interactionsScript from "../scripts/interactions.ts?url"
+import pexelsScript from "../scripts/pexels-background.ts?url"
+import "../styles/global.css"
+
+interface Props {
+	title?: string
+	description?: string
+}
+
+const {
+	title = `${siteConfig.name} · ${siteConfig.tagline}`,
+	description = siteConfig.heroDescription,
+}: Props = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<script is:inline>
+			if (localStorage.getItem("darkMode") !== "false") {
+				document.documentElement.classList.add("dark")
+			}
+		</script>
+	</head>
+	<body class="bg-bg text-text-primary flex min-h-screen flex-col">
+		<Nav links={navLinks} languages={languages} />
+		<main class="flex-1 pt-16">
+			<slot />
+		</main>
+		<Footer />
+		<ConfigScript />
+		<script type="module" src={interactionsScript}></script>
+		<script type="module" src={pexelsScript}></script>
+		<script type="module" src={heroScript}></script>
+	</body>
+</html>

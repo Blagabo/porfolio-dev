@@ -1,0 +1,13 @@
+---
+// const queriesJson = JSON.stringify(siteConfig.pexels.queries)
+// const pexelsKey = import.meta.env.PUBLIC_PEXELS_API_KEY ?? ""
+// const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT ?? siteConfig.formspree
+---
+
+<script is:inline>
+	{
+		;`window.PEXELS_QUERIES = ${queriesJson};
+  window.PEXELS_API_KEY = ${JSON.stringify(pexelsKey || null)};
+  window.FORMSPREE_ENDPOINT = ${JSON.stringify(formspreeEndpoint)};`
+	}
+</script>

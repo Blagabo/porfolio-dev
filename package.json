@@ -1,0 +1,42 @@
+{
+	"name": "porfolio-dev",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"author": "Blagabo",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.5",
+		"@astrojs/tailwind": "^6.0.2",
+		"@fontsource/montserrat": "^5.0.8",
+		"@fontsource/nunito": "^5.0.17",
+		"@iconify-json/cib": "^1.2.3",
+		"@iconify-json/fa6-brands": "^1.2.6",
+		"@iconify-json/fa6-regular": "^1.2.4",
+		"@iconify-json/fa6-solid": "^1.2.4",
+		"@iconify-json/simple-icons": "^1.2.58",
+		"@typescript-eslint/parser": "^8.46.4",
+		"astro": "^5.15.8",
+		"astro-compress": "^2.2.25",
+		"astro-icon": "^1.0.0",
+		"gsap": "^3.12.5",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5.9.3"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^6.2.0",
+		"eslint": "^9.39.1",
+		"eslint-plugin-astro": "^1.5.0",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"prettier": "^3.6.2",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-astro-organize-imports": "^0.4.11",
+		"prettier-plugin-tailwindcss": "^0.7.1"
+	}
+}

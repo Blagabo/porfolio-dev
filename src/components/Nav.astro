@@ -1,0 +1,139 @@
+---
+import { Icon } from "astro-icon/components"
+import { siteConfig } from "../data/site"
+import type { Language, NavLink } from "../types"
+
+interface Props {
+	links: NavLink[]
+	languages: Language[]
+}
+
+const { links, languages }: Props = Astro.props
+---
+
+<nav
+	class="bg-bg/95 border-border-primary dark:bg-bg/80 dark:border-border-primary fixed inset-x-0 top-0 z-50 border-b backdrop-blur"
+>
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex h-16 items-center justify-between">
+			<a
+				href="#home"
+				class="font-heading text-text-primary dark:text-text-primary text-2xl font-bold"
+			>
+				{siteConfig.name}
+			</a>
+
+			<div class="hidden items-center space-x-8 lg:flex">
+				{
+					links.map((link) => (
+						<a
+							class={`nav-link ${link.href.startsWith("#") ? "section-link" : ""} text-text-primary dark:text-text-primary`}
+							href={link.href}
+							data-section={link.href}
+						>
+							{link.name}
+						</a>
+					))
+				}
+
+				<div class="group relative">
+					<button
+						class="nav-link text-text-primary dark:text-text-primary flex items-center"
+						aria-label="Language switcher"
+					>
+						<span class="mr-1 text-lg">{languages[0].flag}</span>
+						<Icon name="fa6-solid:chevron-down" class="text-xs" />
+					</button>
+					<div
+						class="submenu bg-bg dark:bg-bg invisible absolute right-0 top-full mt-2 min-w-[8rem] rounded-lg opacity-0 shadow-lg"
+					>
+						{
+							languages.map((language) => (
+								<a
+									class="nav-link text-text-primary dark:text-text-primary block px-4 py-2 text-sm"
+									href={`/${language.code}/`}
+								>
+									<span class="mr-2">{language.flag}</span>
+									{language.label}
+								</a>
+							))
+						}
+					</div>
+				</div>
+
+				<div class="flex items-center space-x-4" data-animation="social">
+					{
+						siteConfig.social.map((item) => (
+							<a
+								href={item.url}
+								target="_blank"
+								class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125"
+								rel="noreferrer"
+							>
+								<Icon name={item.icon} class="text-xl" aria-label={item.label} />
+							</a>
+						))
+					}
+				</div>
+
+				<button
+					id="darkModeToggle"
+					class="text-text-primary dark:text-text-primary focus:outline-none"
+				>
+					<Icon name="fa6-solid:moon" class="dark:hidden" />
+					<Icon name="fa6-regular:sun" class="hidden dark:block" />
+				</button>
+			</div>
+
+			<div class="flex items-center space-x-4 lg:hidden">
+				<button
+					id="darkModeToggleMobile"
+					class="text-text-primary dark:text-text-primary focus:outline-none"
+				>
+					<Icon name="fa6-solid:moon" class="dark:hidden" />
+					<Icon name="fa6-regular:sun" class="hidden dark:block" />
+				</button>
+				<button id="menu-btn" class="text-text-primary dark:text-text-primary">
+					<Icon name="fa6-solid:bars" class="text-2xl" />
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div
+		id="mobile-menu"
+		class="bg-bg dark:bg-bg border-border-primary dark:border-border-primary hidden border-t shadow-lg lg:hidden"
+	>
+		<div class="space-y-2 px-4 py-4">
+			{
+				links.map((link) => (
+					<a
+						class={`nav-link text-text-primary dark:text-text-primary block rounded-md px-3 py-2 text-base font-medium ${
+							link.href.startsWith("#") ? "section-link" : ""
+						}`}
+						href={link.href}
+						data-section={link.href}
+					>
+						{link.name}
+					</a>
+				))
+			}
+			<div
+				class="border-border-primary dark:border-border-primary flex items-center space-x-4 border-t pt-4"
+			>
+				{
+					siteConfig.social.map((item) => (
+						<a
+							href={item.url}
+							target="_blank"
+							rel="noreferrer"
+							class="text-text-primary dark:text-text-primary"
+						>
+							<Icon name={item.icon} class="text-2xl" aria-label={item.label} />
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</nav>

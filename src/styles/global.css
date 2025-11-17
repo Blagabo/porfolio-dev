@@ -1,0 +1,382 @@
+@import "@fontsource/nunito/400.css";
+@import "@fontsource/nunito/600.css";
+@import "@fontsource/nunito/700.css";
+@import "@fontsource/montserrat/600.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	color-scheme: dark;
+	--color-primary: #1f3258;
+	--color-second: #4f6cf5;
+	--color-third: #9be2ff;
+	--color-primary-light: color-mix(in srgb, var(--color-primary) 40%, #7aa2ff);
+	--color-primary-dark: color-mix(in srgb, var(--color-primary) 85%, #050810);
+	--color-primary-lighter: color-mix(in srgb, var(--color-primary) 25%, #f8fbff);
+	--color-second-light: color-mix(in srgb, var(--color-second) 45%, #b7c7ff);
+	--color-second-dark: color-mix(in srgb, var(--color-second) 75%, #0d1330);
+	--color-second-lighter: color-mix(in srgb, var(--color-second) 25%, #f5f7ff);
+	--color-third-light: color-mix(in srgb, var(--color-third) 60%, #ffffff);
+	--color-third-dark: color-mix(in srgb, var(--color-third) 70%, #0d1b2a);
+	--color-third-lighter: color-mix(in srgb, var(--color-third) 30%, #ffffff);
+	--color-white: #ffffff;
+	--color-black: #090f1c;
+	--color-bg: #0f1b2e;
+	--color-bg-secondary: #162540;
+	--color-bg-tertiary: #1f3054;
+	--color-text-primary: color-mix(in srgb, var(--color-white) 96%, var(--color-black));
+	--color-text-secondary: color-mix(in srgb, var(--color-white) 75%, var(--color-black));
+	--color-border: color-mix(in srgb, var(--color-third) 45%, transparent);
+}
+
+:root.dark {
+	color-scheme: dark;
+	--color-bg: #0b1424;
+	--color-bg-secondary: #131e34;
+	--color-bg-tertiary: #1a2844;
+	--color-text-primary: color-mix(in srgb, var(--color-white) 98%, var(--color-black));
+	--color-text-secondary: color-mix(in srgb, var(--color-white) 78%, var(--color-black));
+	--color-border: color-mix(in srgb, var(--color-third) 65%, var(--color-black));
+}
+
+body {
+	font-family:
+		"Nunito",
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+	background-color: var(--color-bg);
+	color: var(--color-text-primary);
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+.font-heading {
+	font-family: "Montserrat", "Nunito", sans-serif;
+}
+
+.nav-link {
+	position: relative;
+	transition: color 0.3s ease;
+}
+
+.nav-link::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 2px;
+	left: 0;
+	bottom: -4px;
+	background: var(--color-third);
+	transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+	color: var(--color-third);
+}
+
+.nav-link:hover::after {
+	width: 100%;
+}
+
+.submenu {
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease;
+}
+
+.group:hover .submenu {
+	opacity: 1;
+	visibility: visible;
+}
+
+.gradient-bg {
+	background: linear-gradient(
+		135deg,
+		var(--color-primary-dark) 0%,
+		var(--color-primary) 25%,
+		var(--color-primary-light) 50%,
+		var(--color-primary) 75%,
+		var(--color-primary-dark) 100%
+	);
+}
+
+.hero-name {
+	background: linear-gradient(120deg, var(--color-white), var(--color-primary-lighter));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.pexels-bg {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+}
+
+.pexels-bg .pexels-bg-container,
+.pexels-bg .pexels-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+.pexels-bg > * {
+	position: relative;
+	z-index: 1;
+}
+
+.hero-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 140px;
+	min-height: 48px;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.button-hover:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-hover {
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+}
+
+.tech-pill {
+	background: linear-gradient(
+		120deg,
+		color-mix(in srgb, var(--color-primary) 10%, white),
+		color-mix(in srgb, var(--color-primary) 20%, white)
+	);
+	color: var(--color-primary);
+	padding: 0.5rem 1rem;
+	border-radius: 999px;
+	font-weight: 600;
+	border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.quick-fact-card {
+	background: color-mix(in srgb, var(--color-primary) 5%, var(--color-bg));
+	border-radius: 1rem;
+	transition:
+		box-shadow 0.3s ease,
+		transform 0.3s ease;
+}
+
+.quick-fact-card:hover {
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
+}
+
+.collab-tag {
+	background-color: var(--color-third-lighter);
+	color: var(--color-third-dark);
+	font-weight: 600;
+}
+
+.contact-card {
+	position: relative;
+	overflow: hidden;
+}
+
+.contact-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: linear-gradient(90deg, var(--color-third), var(--color-primary));
+}
+
+.contact-card > * {
+	position: relative;
+	z-index: 1;
+}
+
+.hero-text-accent {
+	color: var(--color-primary-lighter);
+}
+
+.hero-text-muted {
+	color: color-mix(in srgb, var(--color-white) 80%, var(--color-primary));
+}
+
+.section-heading {
+	font-size: 1.875rem;
+	font-weight: 700;
+	font-family: "Montserrat", "Nunito", sans-serif;
+	color: var(--color-text-primary);
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.contact-row {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.contact-icon {
+	background-color: var(--color-second-lighter);
+	padding: 0.75rem;
+	border-radius: 999px;
+}
+
+.dark .contact-icon {
+	background-color: var(--color-second-dark);
+}
+
+.form-field {
+	width: 100%;
+	margin-top: 0.25rem;
+	padding: 0.75rem 1rem;
+	border-radius: 0.75rem;
+	border: 1px solid var(--color-border);
+	background-color: var(--color-bg);
+	color: var(--color-text-primary);
+	transition:
+		box-shadow 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.form-field:focus {
+	outline: none;
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+section[id] {
+	scroll-margin-top: 5rem;
+}
+
+section[data-animate] {
+	opacity: 0;
+	transition: opacity 0.6s ease;
+}
+
+section[data-animate].fade-in-visible {
+	opacity: 1;
+}
+
+.bg-bg {
+	background-color: var(--color-bg) !important;
+}
+
+.bg-bg-secondary {
+	background-color: var(--color-bg-secondary) !important;
+}
+
+.bg-bg-tertiary {
+	background-color: var(--color-bg-tertiary) !important;
+}
+
+.text-text-primary {
+	color: var(--color-text-primary) !important;
+}
+
+.text-text-secondary {
+	color: var(--color-text-secondary) !important;
+}
+
+.border-border-primary {
+	border-color: var(--color-border) !important;
+}
+
+.bg-gradient-primary {
+	background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)) !important;
+}
+
+.bg-gradient-primary-lighter {
+	background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary)) !important;
+}
+
+.bg-gradient-to-br {
+	background-size: cover;
+}
+
+.text-primary {
+	color: var(--color-primary) !important;
+}
+
+.text-second {
+	color: var(--color-second) !important;
+}
+
+.bg-second-lighter {
+	background-color: var(--color-second-lighter) !important;
+}
+
+.bg-second {
+	background-color: var(--color-second) !important;
+}
+
+.bg-third-darker {
+	background-color: color-mix(in srgb, var(--color-third) 60%, black) !important;
+}
+
+.text-third {
+	color: var(--color-third) !important;
+}
+
+.bg-primary {
+	background-color: var(--color-primary) !important;
+}
+
+.text-third-light {
+	color: var(--color-third-light) !important;
+}
+
+.bg-third {
+	background-color: var(--color-third) !important;
+}
+
+.dark .dark\:bg-bg {
+	background-color: var(--color-bg) !important;
+}
+
+.dark .dark\:text-text-primary {
+	color: var(--color-text-primary) !important;
+}
+
+.dark .dark\:text-text-secondary {
+	color: var(--color-text-secondary) !important;
+}
+
+.dark .dark\:bg-bg-secondary {
+	background-color: var(--color-bg-secondary) !important;
+}
+
+.typewriter {
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: 2px solid var(--color-primary-light);
+	color: transparent;
+}
+
+.typing-cursor {
+	display: inline-block;
+	width: 2px;
+	height: 1.2em;
+	background-color: var(--color-primary-light);
+	margin-left: 4px;
+}
