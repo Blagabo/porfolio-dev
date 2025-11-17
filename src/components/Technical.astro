@@ -3,23 +3,23 @@ import { Icon } from "astro-icon/components"
 import { technicalContent } from "../data/site"
 ---
 
-<section id="technical" class="bg-bg-secondary border-border-primary border-t py-16" data-animate>
+<section id="technical" class="border-border-primary border-t bg-bg-secondary py-16" data-animate>
 	<div class="mx-auto max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-3xl text-center">
 			<h2 class="section-heading">Technical Toolkit</h2>
-			<p class="text-text-secondary text-lg">{technicalContent.intro}</p>
+			<p class="text-lg text-text-secondary">{technicalContent.intro}</p>
 		</div>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{
 				technicalContent.groups.map((group) => (
-					<article class="from-bg-secondary to-bg-tertiary border-border-primary card-hover rounded-2xl border bg-gradient-to-br p-6">
-						<h3 class="font-heading text-text-primary mb-4 text-center text-xl font-semibold">
+					<article class="border-border-primary card-hover rounded-2xl border bg-gradient-to-br from-bg-secondary to-bg-tertiary p-6">
+						<h3 class="mb-4 text-center font-heading text-xl font-semibold text-text-primary">
 							{group.title}
 						</h3>
 						<div class="flex flex-wrap justify-center gap-4">
 							{group.skills.map((skill) => (
-								<div class="text-text-secondary flex flex-col items-center text-center">
-									<Icon name={skill.icon} class="text-text-primary mb-2 text-4xl" />
+								<div class="flex flex-col items-center text-center text-text-secondary">
+									<Icon name={skill.icon} class="mb-2 text-4xl text-text-primary" />
 									<span class="font-semibold">{skill.name}</span>
 								</div>
 							))}

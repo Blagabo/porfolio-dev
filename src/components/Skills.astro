@@ -5,23 +5,23 @@ import { skillsContent } from "../data/site"
 
 <section
 	id="skills"
-	class="bg-bg-secondary dark:bg-bg-secondary border-border-primary border-t py-16"
+	class="border-border-primary border-t bg-bg-secondary py-16 dark:bg-bg-secondary"
 	data-animate
 >
 	<div class="mx-auto max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
 		<div class="mx-auto max-w-3xl text-center">
 			<h2 class="section-heading">Skills</h2>
-			<p class="text-text-secondary text-lg">{skillsContent.intro}</p>
+			<p class="text-lg text-text-secondary">{skillsContent.intro}</p>
 		</div>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{
 				skillsContent.domains.map((domain) => (
-					<article class="bg-bg dark:bg-bg border-border-primary card-hover rounded-2xl border p-6">
+					<article class="border-border-primary card-hover rounded-2xl border bg-bg p-6 dark:bg-bg">
 						<div class="mb-3 flex items-center gap-3">
-							<Icon name={domain.icon} class="text-text-primary text-3xl" />
-							<h3 class="text-text-primary text-lg font-semibold">{domain.title}</h3>
+							<Icon name={domain.icon} class="text-3xl text-text-primary" />
+							<h3 class="text-lg font-semibold text-text-primary">{domain.title}</h3>
 						</div>
-						<p class="text-text-secondary leading-relaxed">{domain.description}</p>
+						<p class="leading-relaxed text-text-secondary">{domain.description}</p>
 					</article>
 				))
 			}

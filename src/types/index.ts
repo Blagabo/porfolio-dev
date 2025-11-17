@@ -15,3 +15,16 @@ export type Language = {
 	label: string
 	flag: string
 }
+
+export type Photo = {
+	id: number
+	src: {
+		large2x?: string
+		large?: string
+		medium?: string
+	}
+}
+
+export type PexelsResponse = {
+	photos: Photo[]
+}

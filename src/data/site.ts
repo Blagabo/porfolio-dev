@@ -14,7 +14,7 @@ export const languages = [
 export const siteConfig = {
 	name: "Gabriel Blanco",
 	title: "Blagabo · Blockchain & Backend",
-	tagline: "Blockchain & Backend developer crafting secure digital tools.",
+	tagline: "Blockchain & Backend developer.",
 	heroLocation: "España",
 	heroDescription:
 		"Backend and blockchain developer focused on web3 utilities, clean APIs, and practical automation. Actualmente profundizo en React y smart contracts mientras creo side projects útiles.",

@@ -220,6 +220,37 @@ body {
 	color: color-mix(in srgb, var(--color-white) 80%, var(--color-primary));
 }
 
+.hero-section [data-animation] {
+	opacity: 0;
+	transform: translateY(32px);
+	animation: hero-fade-up 0.85s ease forwards;
+}
+
+.hero-section [data-animation="profile-image"] {
+	animation-delay: 0.1s;
+}
+
+.hero-section [data-animation="container"] {
+	animation-delay: 0.2s;
+}
+
+.hero-section [data-animation="social"],
+.hero-section [data-animation="location-badge"] {
+	animation-delay: 0.35s;
+}
+
+@keyframes hero-fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(32px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 .section-heading {
 	font-size: 1.875rem;
 	font-weight: 700;
@@ -367,16 +398,46 @@ section[data-animate].fade-in-visible {
 
 .typewriter {
 	display: inline-block;
+	width: var(--typewriter-ch, 40ch);
+	max-width: 100%;
+}
+
+.typewriter-content {
+	display: inline-block;
 	white-space: nowrap;
 	overflow: hidden;
 	border-right: 2px solid var(--color-primary-light);
-	color: transparent;
+	width: 0;
+	animation:
+		typewriter 3s steps(var(--typewriter-steps, 40)) 1 forwards,
+		caret-blink 1.1s steps(1) calc(3s) 3,
+		caret-hide 0.01s linear calc(3s + 3.3s) forwards;
 }
 
-.typing-cursor {
-	display: inline-block;
-	width: 2px;
-	height: 1.2em;
-	background-color: var(--color-primary-light);
-	margin-left: 4px;
+@keyframes typewriter {
+	from {
+		width: 0;
+	}
+
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes caret-blink {
+	0%,
+	100% {
+		border-color: var(--color-primary-light);
+	}
+
+	50% {
+		border-color: transparent;
+	}
+}
+
+@keyframes caret-hide {
+	to {
+		border-color: transparent;
+		border-right-width: 0;
+	}
 }

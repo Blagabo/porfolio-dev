@@ -1,6 +1,10 @@
 ---
 import { Icon } from "astro-icon/components"
 import { siteConfig } from "../data/site"
+
+const heroTagline = siteConfig.tagline
+const typewriterChars = heroTagline.length
+const typewriterSteps = Math.max(24, Math.min(80, typewriterChars + 4))
 ---
 
 <section
@@ -19,7 +23,9 @@ import { siteConfig } from "../data/site"
 								src={siteConfig.profileImage}
 								alt={`Portrait of ${siteConfig.name}`}
 								class="h-full w-full rounded-full object-cover"
-								loading="lazy"
+								loading="eager"
+								decoding="async"
+								fetchpriority="high"
 							/>
 						</div>
 					</div>
@@ -27,7 +33,7 @@ import { siteConfig } from "../data/site"
 						<div
 							class="flex items-center rounded-full border border-white/20 bg-black/80 px-4 py-2 text-white"
 						>
-							<Icon name="fa6-solid:location-dot" class="text-primary-light mr-2" />
+							<Icon name="fa6-solid:location-dot" class="mr-2 text-primary-light" />
 							<span class="text-sm font-semibold">{siteConfig.heroLocation}</span>
 						</div>
 					</div>
@@ -41,9 +47,12 @@ import { siteConfig } from "../data/site"
 				<span class="hero-text-accent text-lg">{siteConfig.heroGreeting}</span>
 				<h1 class="hero-name font-heading text-5xl font-bold md:text-6xl">{siteConfig.name}</h1>
 				<h2 class="hero-text-accent text-2xl md:text-3xl">
-					<span class="typewriter" data-original-text={siteConfig.tagline}
-						>{siteConfig.tagline}</span
+					<span
+						class="typewriter"
+						style={`--typewriter-ch: ${typewriterChars}ch; --typewriter-steps: ${typewriterSteps}`}
 					>
+						<span class="typewriter-content">{heroTagline}</span>
+					</span>
 				</h2>
 				<p
 					class="hero-text-muted rounded-xl bg-white/5 px-6 py-4 text-lg leading-relaxed md:text-xl dark:bg-white/10"
@@ -53,7 +62,7 @@ import { siteConfig } from "../data/site"
 				<div class="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
 					<a
 						href="#contact"
-						class="hero-button bg-bg text-text-primary button-hover rounded-lg px-8 py-4 font-semibold"
+						class="hero-button button-hover rounded-lg bg-bg px-8 py-4 font-semibold text-text-primary"
 					>
 						{siteConfig.heroCTA.contact}
 					</a>
@@ -61,7 +70,7 @@ import { siteConfig } from "../data/site"
 						href={siteConfig.resume.en}
 						target="_blank"
 						rel="noreferrer"
-						class="hero-button bg-bg text-text-primary button-hover rounded-lg px-8 py-4 font-semibold"
+						class="hero-button button-hover rounded-lg bg-bg px-8 py-4 font-semibold text-text-primary"
 					>
 						{siteConfig.heroCTA.resume}
 					</a>

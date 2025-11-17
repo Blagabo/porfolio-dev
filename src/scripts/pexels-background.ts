@@ -1,22 +1,10 @@
-export {}
-
-type Photo = {
-	id: number
-	src: {
-		large2x?: string
-		large?: string
-		medium?: string
-	}
-}
-
-type PexelsResponse = {
-	photos: Photo[]
-}
+import type { PexelsResponse, Photo } from "../types"
 
 declare global {
 	interface Window {
 		PEXELS_API_KEY?: string | null
 		PEXELS_QUERIES?: string[]
+		PEXELS_ENABLED?: boolean
 	}
 }
 
@@ -118,6 +106,7 @@ class PexelsBackground {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	if (!window.PEXELS_ENABLED) return
 	const background = new PexelsBackground()
 	background.init()
 })

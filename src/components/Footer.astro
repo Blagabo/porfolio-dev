@@ -4,23 +4,23 @@ import { siteConfig } from "../data/site"
 ---
 
 <footer
-	class="bg-bg-secondary dark:bg-bg-secondary text-text-primary border-border-primary mt-16 border-t py-12"
+	class="border-border-primary mt-16 border-t bg-bg-secondary py-12 text-text-primary dark:bg-bg-secondary"
 >
 	<div
 		class="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-4 sm:px-6 md:flex-row lg:px-8"
 	>
 		<div>
-			<a href="#home" class="font-heading text-text-primary text-xl font-bold">{siteConfig.name}</a>
-			<p class="text-text-secondary dark:text-text-secondary mt-2 max-w-md">
+			<a href="#home" class="font-heading text-xl font-bold text-text-primary">{siteConfig.name}</a>
+			<p class="mt-2 max-w-md text-text-secondary">
 				{siteConfig.heroDescription}
 			</p>
-			<p class="text-text-secondary dark:text-text-secondary mt-2 flex items-center gap-2">
+			<p class="mt-2 flex items-center gap-2 text-text-primary">
 				<Icon name="fa6-solid:location-dot" />
 				{siteConfig.heroLocation}
 			</p>
 			<a
 				href={`mailto:${siteConfig.contactEmail}`}
-				class="text-text--primary mt-2 inline-flex items-center gap-2"
+				class="mt-2 inline-flex items-center gap-2 text-text-primary"
 			>
 				<Icon name="fa6-regular:envelope" />
 				{siteConfig.contactEmail}
@@ -37,7 +37,7 @@ import { siteConfig } from "../data/site"
 							href={item.url}
 							target="_blank"
 							rel="noreferrer"
-							class="text-text-primary dark:text-text-primary hover:text-third transition-colors"
+							class="hover:text-third text-text-primary transition-colors dark:text-text-primary"
 						>
 							<Icon name={item.icon} class="text-2xl" aria-label={item.label} />
 						</a>
@@ -47,7 +47,7 @@ import { siteConfig } from "../data/site"
 		</div>
 	</div>
 	<div
-		class="text-text-secondary dark:text-text-secondary border-border-primary mt-8 border-t pt-6 text-center text-sm"
+		class="border-border-primary mt-8 border-t pt-6 text-center text-sm text-text-secondary dark:text-text-secondary"
 	>
 		© {new Date().getFullYear()}
 		{siteConfig.name}. All rights reserved.

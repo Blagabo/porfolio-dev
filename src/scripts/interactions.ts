@@ -1,12 +1,10 @@
-type ToastType = "success" | "error"
-
-export {}
-
 declare global {
 	interface Window {
 		FORMSPREE_ENDPOINT?: string
 	}
 }
+
+export {}
 
 const qs = <T extends Element = Element>(selector: string) => document.querySelector<T>(selector)
 const qsa = <T extends Element = Element>(selector: string) =>
@@ -78,46 +76,6 @@ function handleModal() {
 	})
 }
 
-function showToast(message: string, type: ToastType = "success") {
-	const toast = document.createElement("div")
-	toast.textContent = message
-	toast.className = `fixed bottom-6 right-6 px-4 py-2 rounded-lg shadow-lg text-white ${
-		type === "success" ? "bg-second" : "bg-red-500"
-	}`
-	document.body.appendChild(toast)
-	setTimeout(() => toast.remove(), 4000)
-}
-
-function handleContactForm() {
-	const form = qs<HTMLFormElement>("#contact-form")
-	if (!form) return
-	form.addEventListener("submit", async (event) => {
-		event.preventDefault()
-		const endpoint = window.FORMSPREE_ENDPOINT || form.getAttribute("action")
-		if (!endpoint) {
-			showToast("Contact form not configured", "error")
-			return
-		}
-		const data = new FormData(form)
-		try {
-			const response = await fetch(endpoint, {
-				method: "POST",
-				body: data,
-				headers: { Accept: "application/json" },
-			})
-			if (response.ok) {
-				showToast("Thanks! I will reply soon.")
-				form.reset()
-			} else {
-				showToast("Something went wrong. Please try again.", "error")
-			}
-		} catch (error) {
-			console.error(error)
-			showToast("Unable to submit right now.", "error")
-		}
-	})
-}
-
 function initDarkModeToggle() {
 	const toggles = qsa<HTMLButtonElement>("#darkModeToggle, #darkModeToggleMobile")
 	toggles.forEach((button) => button.addEventListener("click", toggleDarkMode))
@@ -128,6 +86,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleMobileMenu()
 	initializeFadeIn()
 	handleModal()
-	handleContactForm()
 	initDarkModeToggle()
 })

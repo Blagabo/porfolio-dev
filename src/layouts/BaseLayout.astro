@@ -3,7 +3,6 @@ import ConfigScript from "../components/ConfigScript.astro"
 import Footer from "../components/Footer.astro"
 import Nav from "../components/Nav.astro"
 import { languages, navLinks, siteConfig } from "../data/site"
-import heroScript from "../scripts/gsap-hero.ts?url"
 import interactionsScript from "../scripts/interactions.ts?url"
 import pexelsScript from "../scripts/pexels-background.ts?url"
 import "../styles/global.css"
@@ -17,6 +16,8 @@ const {
 	title = `${siteConfig.name} · ${siteConfig.tagline}`,
 	description = siteConfig.heroDescription,
 }: Props = Astro.props
+
+const hasPexelsBackground = Boolean(import.meta.env.PUBLIC_PEXELS_API_KEY ?? "")
 ---
 
 <!doctype html>
@@ -33,7 +34,7 @@ const {
 			}
 		</script>
 	</head>
-	<body class="bg-bg text-text-primary flex min-h-screen flex-col">
+	<body class="flex min-h-screen flex-col bg-bg text-text-primary">
 		<Nav links={navLinks} languages={languages} />
 		<main class="flex-1 pt-16">
 			<slot />
@@ -41,7 +42,6 @@ const {
 		<Footer />
 		<ConfigScript />
 		<script type="module" src={interactionsScript}></script>
-		<script type="module" src={pexelsScript}></script>
-		<script type="module" src={heroScript}></script>
+		{hasPexelsBackground && <script type="module" src={pexelsScript} />}
 	</body>
 </html>

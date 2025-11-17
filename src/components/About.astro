@@ -3,14 +3,14 @@ import { Icon } from "astro-icon/components"
 import { aboutContent, siteConfig } from "../data/site"
 ---
 
-<section id="about" class="bg-bg dark:bg-bg relative py-16" data-animate>
+<section id="about" class="relative bg-bg py-16 dark:bg-bg" data-animate>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<h2 class="section-heading">{`About ${siteConfig.name.split(" ")[0]}`}</h2>
 		<div class="grid gap-8 lg:grid-cols-2">
 			<div
-				class="from-bg-secondary to-bg-tertiary border-border-primary rounded-2xl border bg-gradient-to-br p-6 shadow-lg"
+				class="border-border-primary rounded-2xl border bg-gradient-to-br from-bg-secondary to-bg-tertiary p-6 shadow-lg"
 			>
-				<p class="text-text-secondary text-lg leading-relaxed">
+				<p class="text-lg leading-relaxed text-text-secondary">
 					{aboutContent.intro}
 				</p>
 				<button
@@ -22,10 +22,10 @@ import { aboutContent, siteConfig } from "../data/site"
 				</button>
 			</div>
 			<div
-				class="from-bg-secondary to-bg-tertiary border-border-primary rounded-2xl border bg-gradient-to-br p-6 shadow-lg"
+				class="border-border-primary rounded-2xl border bg-gradient-to-br from-bg-secondary to-bg-tertiary p-6 shadow-lg"
 			>
-				<h3 class="font-heading mb-4 flex items-center text-xl font-semibold">
-					<Icon name="fa6-solid:circle-info" class="text-text-primary mr-3" />
+				<h3 class="mb-4 flex items-center font-heading text-xl font-semibold">
+					<Icon name="fa6-solid:circle-info" class="mr-3 text-text-primary" />
 					Quick facts
 				</h3>
 				<div class="space-y-3">
@@ -33,19 +33,19 @@ import { aboutContent, siteConfig } from "../data/site"
 						aboutContent.quickFacts.map((fact) => (
 							<div class="quick-fact-card rounded-xl border border-transparent p-4">
 								<div class="flex items-start gap-3">
-									<Icon name={fact.icon} class="text-text-primary text-lg" />
+									<Icon name={fact.icon} class="text-lg text-text-primary" />
 									<div class="flex-1">
-										<h4 class="text-text-primary font-semibold">{fact.title}</h4>
+										<h4 class="font-semibold text-text-primary">{fact.title}</h4>
 										{Array.isArray(fact.value) ? (
 											<div class="mt-2 flex flex-wrap gap-2">
 												{fact.value.map((item) => (
-													<span class="border-border-primary text-text-secondary rounded-full border px-3 py-1.5 text-sm">
+													<span class="border-border-primary rounded-full border px-3 py-1.5 text-sm text-text-secondary">
 														{item}
 													</span>
 												))}
 											</div>
 										) : (
-											<p class="text-text-secondary leading-relaxed">{fact.value}</p>
+											<p class="leading-relaxed text-text-secondary">{fact.value}</p>
 										)}
 									</div>
 								</div>
@@ -62,13 +62,13 @@ import { aboutContent, siteConfig } from "../data/site"
 		class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
 	>
 		<div
-			class="bg-bg dark:bg-bg max-h-[80vh] w-full max-w-4xl overflow-y-auto rounded-2xl shadow-2xl"
+			class="max-h-[80vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-bg shadow-2xl dark:bg-bg"
 		>
 			<div class="border-border-primary flex items-center justify-between border-b p-6">
 				<h3 class="font-heading text-2xl font-semibold">My Story</h3>
 				<button id="closeAboutModal" class="text-text-muted text-2xl"> × </button>
 			</div>
-			<div class="text-text-secondary space-y-6 p-6">
+			<div class="space-y-6 p-6 text-text-secondary">
 				<p>{aboutContent.modal.study}</p>
 				<div class="bg-gradient-primary-lighter border-border-primary rounded-xl border p-6">
 					<h4 class="mb-3 text-xl font-semibold">{aboutContent.modal.passionTitle}</h4>

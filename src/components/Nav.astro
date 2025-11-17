@@ -12,13 +12,13 @@ const { links, languages }: Props = Astro.props
 ---
 
 <nav
-	class="bg-bg/95 border-border-primary dark:bg-bg/80 dark:border-border-primary fixed inset-x-0 top-0 z-50 border-b backdrop-blur"
+	class="border-border-primary dark:border-border-primary fixed inset-x-0 top-0 z-50 border-b bg-bg/95 backdrop-blur dark:bg-bg/80"
 >
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
 			<a
 				href="#home"
-				class="font-heading text-text-primary dark:text-text-primary text-2xl font-bold"
+				class="font-heading text-2xl font-bold text-text-primary dark:text-text-primary"
 			>
 				{siteConfig.name}
 			</a>
@@ -38,19 +38,19 @@ const { links, languages }: Props = Astro.props
 
 				<div class="group relative">
 					<button
-						class="nav-link text-text-primary dark:text-text-primary flex items-center"
+						class="nav-link flex items-center text-text-primary dark:text-text-primary"
 						aria-label="Language switcher"
 					>
 						<span class="mr-1 text-lg">{languages[0].flag}</span>
 						<Icon name="fa6-solid:chevron-down" class="text-xs" />
 					</button>
 					<div
-						class="submenu bg-bg dark:bg-bg invisible absolute right-0 top-full mt-2 min-w-[8rem] rounded-lg opacity-0 shadow-lg"
+						class="submenu invisible absolute right-0 top-full mt-2 min-w-[8rem] rounded-lg bg-bg opacity-0 shadow-lg dark:bg-bg"
 					>
 						{
 							languages.map((language) => (
 								<a
-									class="nav-link text-text-primary dark:text-text-primary block px-4 py-2 text-sm"
+									class="nav-link block px-4 py-2 text-sm text-text-primary dark:text-text-primary"
 									href={`/${language.code}/`}
 								>
 									<span class="mr-2">{language.flag}</span>
@@ -67,7 +67,7 @@ const { links, languages }: Props = Astro.props
 							<a
 								href={item.url}
 								target="_blank"
-								class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125"
+								class="text-text-primary transition-transform duration-300 hover:scale-125 dark:text-text-primary"
 								rel="noreferrer"
 							>
 								<Icon name={item.icon} class="text-xl" aria-label={item.label} />
@@ -88,7 +88,7 @@ const { links, languages }: Props = Astro.props
 			<div class="flex items-center space-x-4 lg:hidden">
 				<button
 					id="darkModeToggleMobile"
-					class="text-text-primary dark:text-text-primary focus:outline-none"
+					class="text-text-primary focus:outline-none dark:text-text-primary"
 				>
 					<Icon name="fa6-solid:moon" class="dark:hidden" />
 					<Icon name="fa6-regular:sun" class="hidden dark:block" />
@@ -102,13 +102,13 @@ const { links, languages }: Props = Astro.props
 
 	<div
 		id="mobile-menu"
-		class="bg-bg dark:bg-bg border-border-primary dark:border-border-primary hidden border-t shadow-lg lg:hidden"
+		class="border-border-primary dark:border-border-primary hidden border-t bg-bg shadow-lg lg:hidden dark:bg-bg"
 	>
 		<div class="space-y-2 px-4 py-4">
 			{
 				links.map((link) => (
 					<a
-						class={`nav-link text-text-primary dark:text-text-primary block rounded-md px-3 py-2 text-base font-medium ${
+						class={`nav-link block rounded-md px-3 py-2 text-base font-medium text-text-primary dark:text-text-primary ${
 							link.href.startsWith("#") ? "section-link" : ""
 						}`}
 						href={link.href}
