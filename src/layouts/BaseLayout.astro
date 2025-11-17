@@ -1,10 +1,8 @@
 ---
-import ConfigScript from "../components/ConfigScript.astro"
 import Footer from "../components/Footer.astro"
 import Nav from "../components/Nav.astro"
 import { languages, navLinks, siteConfig } from "../data/site"
 import interactionsScript from "../scripts/interactions.ts?url"
-import pexelsScript from "../scripts/pexels-background.ts?url"
 import "../styles/global.css"
 
 interface Props {
@@ -16,8 +14,6 @@ const {
 	title = `${siteConfig.name} · ${siteConfig.tagline}`,
 	description = siteConfig.heroDescription,
 }: Props = Astro.props
-
-const hasPexelsBackground = Boolean(import.meta.env.PUBLIC_PEXELS_API_KEY ?? "")
 ---
 
 <!doctype html>
@@ -40,8 +36,6 @@ const hasPexelsBackground = Boolean(import.meta.env.PUBLIC_PEXELS_API_KEY ?? "")
 			<slot />
 		</main>
 		<Footer />
-		<ConfigScript />
 		<script type="module" src={interactionsScript}></script>
-		{hasPexelsBackground && <script type="module" src={pexelsScript} />}
 	</body>
 </html>

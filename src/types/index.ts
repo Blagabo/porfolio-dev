@@ -1,22 +1,22 @@
-export type Palette = {
+export interface Palette {
 	name: string
 	main: string
 	second: string
 	third: string
 }
 
-export type NavLink = {
+export interface NavLink {
 	name: string
 	href: string
 }
 
-export type Language = {
+export interface Language {
 	code: string
 	label: string
 	flag: string
 }
 
-export type Photo = {
+export interface Photo {
 	id: number
 	src: {
 		large2x?: string
@@ -25,6 +25,6 @@ export type Photo = {
 	}
 }
 
-export type PexelsResponse = {
+export interface PexelsResponse {
 	photos: Photo[]
 }

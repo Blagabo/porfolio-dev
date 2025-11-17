@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components"
 import { siteConfig } from "../data/site"
-import type { Language, NavLink } from "../types"
+import type { Language, NavLink } from "../types/index"
 
 interface Props {
 	links: NavLink[]
@@ -27,7 +27,7 @@ const { links, languages }: Props = Astro.props
 				{
 					links.map((link) => (
 						<a
-							class={`nav-link ${link.href.startsWith("#") ? "section-link" : ""} text-text-primary dark:text-text-primary`}
+							class:list={`nav-link ${link.href.startsWith("#") ? "section-link" : ""} text-text-primary dark:text-text-primary`}
 							href={link.href}
 							data-section={link.href}
 						>
@@ -108,7 +108,7 @@ const { links, languages }: Props = Astro.props
 			{
 				links.map((link) => (
 					<a
-						class={`nav-link block rounded-md px-3 py-2 text-base font-medium text-text-primary dark:text-text-primary ${
+						class:list={`nav-link block rounded-md px-3 py-2 text-base font-medium text-text-primary dark:text-text-primary ${
 							link.href.startsWith("#") ? "section-link" : ""
 						}`}
 						href={link.href}
