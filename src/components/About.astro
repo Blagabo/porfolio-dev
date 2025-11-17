@@ -25,7 +25,7 @@ import { aboutContent, siteConfig } from "../data/site"
 				class="from-bg-secondary to-bg-tertiary border-border-primary rounded-2xl border bg-gradient-to-br p-6 shadow-lg"
 			>
 				<h3 class="font-heading mb-4 flex items-center text-xl font-semibold">
-					<Icon name="fa6-solid:circle-info" class="text-primary mr-3" />
+					<Icon name="fa6-solid:circle-info" class="text-text-primary mr-3" />
 					Quick facts
 				</h3>
 				<div class="space-y-3">
@@ -33,7 +33,7 @@ import { aboutContent, siteConfig } from "../data/site"
 						aboutContent.quickFacts.map((fact) => (
 							<div class="quick-fact-card rounded-xl border border-transparent p-4">
 								<div class="flex items-start gap-3">
-									<Icon name={fact.icon} class="text-primary text-lg" />
+									<Icon name={fact.icon} class="text-text-primary text-lg" />
 									<div class="flex-1">
 										<h4 class="text-text-primary font-semibold">{fact.title}</h4>
 										{Array.isArray(fact.value) ? (

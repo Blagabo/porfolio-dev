@@ -22,7 +22,7 @@ function initTypingEffect() {
 	cursor.className = "typing-cursor"
 	element.appendChild(cursor)
 
-	function typeConcept(concept: string) {
+	function typeConcept(concept: string, eraseAfter = true) {
 		return new Promise<void>((resolve) => {
 			const chars = concept.split("")
 			let index = 0
@@ -35,7 +35,11 @@ function initTypingEffect() {
 				index += 1
 				if (index === chars.length) {
 					clearInterval(typeInterval)
-					setTimeout(() => eraseConcept(chars, resolve), 1500)
+					if (eraseAfter) {
+						setTimeout(() => eraseConcept(chars, resolve), 1500)
+					} else {
+						resolve()
+					}
 				}
 			}, 80)
 		})
@@ -56,14 +60,14 @@ function initTypingEffect() {
 		}, 40)
 	}
 
-	async function loop() {
-		for (const concept of concepts) {
-			await typeConcept(concept)
+	;(async () => {
+		for (let i = 0; i < concepts.length; i += 1) {
+			const concept = concepts[i]
+			const shouldErase = i !== concepts.length - 1
+			await typeConcept(concept, shouldErase)
 		}
-		loop()
-	}
-
-	loop()
+		cursor.remove()
+	})()
 
 	gsap.to(cursor, { opacity: 0, duration: 0.7, yoyo: true, repeat: -1, ease: "power2.inOut" })
 	typingInitialized = true

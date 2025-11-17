@@ -14,15 +14,14 @@ export const languages = [
 export const siteConfig = {
 	name: "Gabriel Blanco",
 	title: "Blagabo · Blockchain & Backend",
-	tagline: "Blockchain & backend developer crafting secure digital tools.",
+	tagline: "Blockchain & Backend developer crafting secure digital tools.",
 	heroLocation: "España",
 	heroDescription:
 		"Backend and blockchain developer focused on web3 utilities, clean APIs, and practical automation. Actualmente profundizo en React y smart contracts mientras creo side projects útiles.",
-	profileImage:
-		"https://images.pexels.com/photos/789822/pexels-photo-789822.jpeg?auto=compress&dpr=2&w=320",
+	profileImage: "/images/gblanco.webp",
 	resume: {
-		en: "/files/cv-gabriel-blanco-en.pdf",
-		es: "/files/cv-gabriel-blanco-es.pdf",
+		en: "/files/CV_Gabriel_Blanco_Noce.pdf",
+		es: "/files/CV_Gabriel_Blanco_Noce.pdf",
 	},
 	contactEmail: "gabrielblanconoce5@gmail.com",
 	linkedin: "https://www.linkedin.com/in/blagabo",
@@ -125,7 +124,7 @@ export const experienceContent = {
 			company: "Freelance · Blagabo",
 			role: "Blockchain & Backend Developer",
 			period: "2021 — Presente",
-			location: "Remoto · Venezuela",
+			location: "Remoto · España",
 			industry: "Web3 / Backend",
 			companyUrl: "https://github.com/Blagabo",
 			description:
@@ -189,5 +188,5 @@ export const technicalContent = {
 export const contactContent = {
 	intro:
 		"Disponible para colaborar en productos blockchain, backend APIs, tutorías y proyectos freelance.",
-	locations: ["Venezuela", "Remoto"],
+	locations: ["Madrid", "Remoto"],
 }

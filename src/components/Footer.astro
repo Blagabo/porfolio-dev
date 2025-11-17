@@ -20,7 +20,7 @@ import { siteConfig } from "../data/site"
 			</p>
 			<a
 				href={`mailto:${siteConfig.contactEmail}`}
-				class="text-primary mt-2 inline-flex items-center gap-2"
+				class="text-text--primary mt-2 inline-flex items-center gap-2"
 			>
 				<Icon name="fa6-regular:envelope" />
 				{siteConfig.contactEmail}
@@ -28,11 +28,7 @@ import { siteConfig } from "../data/site"
 		</div>
 		<div class="flex flex-col items-start gap-4 md:items-end">
 			<div class="flex flex-wrap justify-end gap-2">
-				{
-					siteConfig.collabTags.map((tag) => (
-						<span class="collab-tag rounded-full px-3 py-1 text-sm">{tag}</span>
-					))
-				}
+				{siteConfig.collabTags.map((tag) => <span class="tech-pill text-xs">{tag}</span>)}
 			</div>
 			<div class="flex gap-4">
 				{
